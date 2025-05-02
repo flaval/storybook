@@ -51,7 +51,16 @@ export const ViewportTool: FC<{ api: API }> = ({ api }) => {
   const length = Object.keys(options).length;
 
   useEffect(() => {
-    registerShortcuts(api, viewportName, updateGlobals, Object.keys(options));
+    const viewports = Object.keys(options).map((optionKey) => ({
+      value: optionKey,
+      isRotated: false,
+    }));
+    registerShortcuts(
+      api,
+      viewports.find(({ value }) => value === viewportName),
+      updateGlobals,
+      viewports
+    );
   }, [options, viewportName, updateGlobals, api]);
 
   if (item.styles === null || !options || length < 1) {
