@@ -80,7 +80,5 @@ export interface ViewportGlobals {
    *
    * @see https://storybook.js.org/docs/essentials/viewport#globals
    */
-  viewport: {
-    [key: string]: GlobalState;
-  };
+  viewport: GlobalState;
 }
